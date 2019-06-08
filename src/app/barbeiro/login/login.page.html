@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Login da Barbearia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!uid">
+  <form #fc="ngForm" (ngSubmit)="onSubmit(fc)">
+    <ion-item>
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input type="email" name='email' [(ngModel)]="email" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password" name='pws' [(ngModel)]="pws" minlength="6" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-button type="submit" [disabled]="!fc.valid">Entrar</ion-button>
+      <ion-button type="reset" [routerLink]="['/']">Cancelar</ion-button>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-button (click)="googleLogin()" expand="block" color="light"><ion-icon name="logo-google"></ion-icon> Google </ion-button>
+    </ion-item>
+
+    <ion-item lines="none">
+        <ion-button [routerLink]="['/cadastro/']"expand="block">Cadastrar Barbearia</ion-button>
+      </ion-item>
+  </form>
+</ion-content>

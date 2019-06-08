@@ -19,9 +19,9 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'Comprar',
-      url: '/car',
-      icon: 'basket',
+      title: 'Buscar',
+      url: '/list',
+      icon: 'search',
     },
     
     
