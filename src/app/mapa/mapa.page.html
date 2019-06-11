@@ -1,9 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>mapa</ion-title>
+    <ion-title>
+      Google Maps
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+
+  <ion-item lines="none">
+    <ion-button (click)="localAtual()">
+      Marcar local
+    </ion-button>
+  </ion-item>
+
+  <div class="map" id="map_canvas" (click)="pegaLocal()">
+    <ion-input type="text" placeholder="Endereco" [(ngModel)]="endereco"></ion-input>
+    <ion-button (click)="localEndereco($event)">
+      Buscar
+    </ion-button>
+  </div>
 
 </ion-content>

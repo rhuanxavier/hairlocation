@@ -20,7 +20,7 @@ export class AppComponent {
     },
     {
       title: 'Buscar',
-      url: '/list',
+      url: '/mapa',
       icon: 'search',
     },
     
