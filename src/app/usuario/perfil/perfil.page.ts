@@ -5,7 +5,7 @@ import { Usuario } from '../usuario';
 import { UsuarioService } from '../usuario.service';
 
 @Component({
-  selector: 'app-perfil',
+  selector: 'perfil',
   templateUrl: './perfil.page.html',
   styleUrls: ['./perfil.page.scss'],
 })

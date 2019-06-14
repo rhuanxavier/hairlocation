@@ -38,7 +38,7 @@ export class CadastroPage implements OnInit {
 
   ngOnInit() {
     this.barbearia = new Barbearia;
-    this.uid = this.activeRouter.snapshot.paramMap.get("id");
+    this.uid = this.activeRouter.snapshot.paramMap.get("ID");
     if (this.uid != null) {
       this.edit(this.uid);
     } else {
@@ -56,7 +56,7 @@ export class CadastroPage implements OnInit {
             this.barbeariaService.saveAuth(this.barbearia);
             form.reset();
             this.barbearia = new Barbearia;
-            this.router.navigate(['/home']);
+            this.router.navigate(['/perfilbarbeiro']);
           },
           err => {
             this.presentAlert("Erro!!!", "Ops!! Deu erro ao salvar!" + err);

@@ -4,7 +4,6 @@ export class Barbearia {
     email: string;
     pws: string;
     endereco: string;
-    avaliacao: string;
     foto: string;
     ativo: boolean = true;
 }
