@@ -7,7 +7,7 @@
 <ion-content padding>
   <ion-list lines="none">
 
-    <ion-item [routerLink]="[ 'cadastro', uid]">
+    <ion-item>
       <img [src]="usuario.foto" alt="" *ngIf="usuario.foto != null">
       <img src="/assets/perfil.jpg" alt="" *ngIf="usuario.foto == null">
     </ion-item>

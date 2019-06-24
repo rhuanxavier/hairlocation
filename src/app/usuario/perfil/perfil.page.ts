@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
 import { Usuario } from '../usuario';
-import { UsuarioService } from '../usuario.service';
+import { UsuarioService } from '../usuario.service';  
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { ToastController, LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'perfil',
@@ -17,6 +20,11 @@ export class PerfilPage implements OnInit {
   constructor(
     private usuarioService: UsuarioService,
     private activeRouter: ActivatedRoute,
+    private afa: AngularFireAuth,
+    private afs: AngularFirestore,
+    private loadingCtrl: LoadingController,
+    private toastCtrl: ToastController,
+    private router: Router,
   ) { }
 
   ngOnInit() {
