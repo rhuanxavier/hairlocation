@@ -14,8 +14,12 @@ import { Router } from '@angular/router';
 })
 export class PerfilPage implements OnInit {
 
-  private usuario: Usuario;
+
+  public usuario: Usuario;
   private uid: string = null;
+  private loading: any;
+  public verdade: any = true;
+
 
   constructor(
     private usuarioService: UsuarioService,
@@ -27,20 +31,47 @@ export class PerfilPage implements OnInit {
     private router: Router,
   ) { }
 
+ 
+
   ngOnInit() {
-    this.usuario = new Usuario;
-    this.uid = this.activeRouter.snapshot.paramMap.get("ID");
-    if (this.uid) {
-      this.usuarioService.get(this.uid)
-        .subscribe(
-          res => {
-            this.usuario = res;
-          },
-          err => {
-            console.log(err);
-          }
-        );
+    this.afa.user.subscribe((id => {
+      this.usuarioService.getUser(id.uid).subscribe(
+        res => {
+          this.usuario = res[0];
+          this.usuario.uid = id.uid;
+        });
+    }));
+
+  }
+
+
+
+  onChanged(event: any) {
+    this.verdade = event.detail.checked;
+    if (this.verdade === true) {
+      this.ngOnInit();
     }
   }
 
+  async editUser() {
+    try {
+      await this.usuarioService.editUser(this.usuario.uid, this.usuario);
+      this.verdade = true;
+      this.presentToast("Dados atualizados com sucesso!");
+      this.router.navigate(["home"]);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+
+  async presentLoading() {
+    this.loading = await this.loadingCtrl.create({ message: 'Aguarde...' });
+    return this.loading.present();
+  }
+
+  async presentToast(message: string) {
+    const toast = await this.toastCtrl.create({ message, duration: 3000 });
+    toast.present();
+  }
 }

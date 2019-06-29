@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'loginbarbeiro', loadChildren: './barbeiro/login/login.module#LoginPageModule' },
   { path: 'perfilbarbeiro', loadChildren: './barbeiro/perfil/perfil.module#PerfilPageModule' },
   { path: 'mapa', loadChildren: './mapa/mapa.module#MapaPageModule' }
-];
+]
 
 @NgModule({
   imports: [
@@ -24,4 +24,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

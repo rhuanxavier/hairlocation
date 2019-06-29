@@ -1,29 +1,28 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Perfil do cliente</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-list lines="none">
+<ion-content>
+  <ion-list>
+
+    
+    <ion-item>
+      <ion-label position="floating">Nome:</ion-label>
+      <ion-input [(ngModel)]="usuario.nome"></ion-input>
+    </ion-item>
 
     <ion-item>
-      <img [src]="usuario.foto" alt="" *ngIf="usuario.foto != null">
-      <img src="/assets/perfil.jpg" alt="" *ngIf="usuario.foto == null">
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Nome</ion-label>
-      <ion-text>{{usuario.nome}}</ion-text>
-    </ion-item>
-    <ion-item>
-      <ion-label>E-mail</ion-label>
-      <ion-text>{{usuario.email}}</ion-text>
-    </ion-item>
-    <ion-item>
-      <ion-label>Ativo</ion-label>
-      <ion-text>{{usuario.ativo}}</ion-text>
+      <ion-label position="floating">E-mail:</ion-label>
+      <ion-input [(ngModel)]="usuario.email" ></ion-input>
     </ion-item>
 
   </ion-list>
+
+  <ion-button *ngIf="!verdade" (click)="editUser()" expand="block">Editar</ion-button>
+
 </ion-content>

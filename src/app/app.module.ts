@@ -20,7 +20,11 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFirestoreModule } from "angularfire2/firestore";
+import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 import { environment } from '../environments/environment.prod';
+
+//Auth
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,6 +37,7 @@ import { environment } from '../environments/environment.prod';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     AngularFirestoreModule,
+    AngularFireAuthGuardModule,
     FormsModule
   ],
   providers: [
@@ -41,7 +46,8 @@ import { environment } from '../environments/environment.prod';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Camera,
     GooglePlus,
-    Geolocation
+    Geolocation,
+    
   ],
   bootstrap: [AppComponent]
 })

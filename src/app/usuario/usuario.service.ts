@@ -4,6 +4,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { auth } from 'firebase/app';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 
 
@@ -17,7 +20,9 @@ export class UsuarioService {
   constructor(
     private db: AngularFireDatabase,
     private afAuth: AngularFireAuth,
-    private router: Router
+    private router: Router,
+    private afs: AngularFirestore
+
   ) {
     this.validar();
   }
@@ -56,7 +61,7 @@ export class UsuarioService {
   }
 
   getAll() {
-    return this.db.list('clientes').snapshotChanges()
+    return this.db.list('usuario').snapshotChanges()
       .pipe(
         map(changes =>
           changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
@@ -64,8 +69,8 @@ export class UsuarioService {
       )
   }
 
-  save(cliente: Usuario) {
-    return this.db.list("clientes").push(cliente)
+  save(usuario: Usuario) {
+    return this.db.list("usuario").push(usuario)
     // .then(
     //   res => {
     //     cliente.id = res.key;
@@ -75,19 +80,29 @@ export class UsuarioService {
   }
 
   remove(key) {
-    return this.db.list("clientes").remove(key);
+    return this.db.list("usuario").remove(key);
   }
 
-  update(key, cliente: Usuario) {
-    return this.db.list("clientes").update(key, cliente);
+  update(key, usuario: Usuario) {
+    return this.db.list("usuario").update(key, usuario);
   }
 
   get(key) {
-    return this.db.object<Usuario>("clientes/" + key).valueChanges();
+    return this.db.object<Usuario>("usuario/" + key).valueChanges();
   }
 
-  saveAuth(cliente: Usuario) {
-    this.afAuth.auth.createUserWithEmailAndPassword(cliente.email, cliente.pws);
+  saveAuth(usuario: Usuario) {
+    this.afAuth.auth.createUserWithEmailAndPassword(usuario.email,usuario.pws);
   }
-  
+ 
+  AddUser(uid: string, usuario) {
+    return this.afs.collection('usuario').doc(uid).set(usuario);
+  }
+
+  getUser(uid: string) {
+    return this.afs.collection<Usuario>('usuario').doc(uid).valueChanges();
+  }
+  editUser(uid: string, usuario) {
+    return this.afs.doc('usuario/' + uid).update(usuario);
+  }
 }

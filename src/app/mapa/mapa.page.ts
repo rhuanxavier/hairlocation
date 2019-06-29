@@ -38,6 +38,9 @@ export class MapaPage {
     await this.platform.ready();
     await this.loadMap();
   }
+//Auth
+
+
 
 
   loadMap() {
@@ -88,7 +91,7 @@ export class MapaPage {
 
   //Local Atual -------------
   localAtual() {
-    this.map.clear();
+    // this.map.clear();
     this.map.getMyLocation()
       .then(
         (location: MyLocation) => {
@@ -169,22 +172,49 @@ export class MapaPage {
     return [
       {
         "position": {
-          "lat": 21.382314,
-          "lng": -157.933097
+          "lat": -22.8729204,
+          "lng": -43.3388639
         },
-        "name": "Starbucks - HI - Aiea  03641",
-        "address": "Aiea Shopping Center_99-115\nAiea Heights Drive #125_Aiea, Hawaii 96701",
+        "nome": "Mark Barber Shop",
+        "endereco": "Estrada do Portela, 99 - Loja 223 -\n Madureira, Rio de Janeiro - RJ, 21351-901",
         "icon": "assets/markercluster/marker.png"
       },
       {
         "position": {
-          "lat": 21.3871,
-          "lng": -157.9482
+          "lat": -22.871519,
+          "lng": -43.341842
         },
-        "name": "Starbucks - HI - Aiea  03642",
-        "address": "Pearlridge Center_98-125\nKaonohi Street_Aiea, Hawaii 96701",
+        "nome": "Barbearia Criarte",
+        "endereco": "Rua Firmino Fragoso, 186 \n Madureira, Rio de Janeiro - RJ, 21351-090",
         "icon": "assets/markercluster/marker.png"
       },
+    {
+      "position": {
+        "lat": -22.884218,
+        "lng": -43.356979
+      },
+      "nome": "Barbearia Irmãos Leal",
+      "endereco": "Rua Quiririm, 716 - Vila Valqueire,\n Rio de Janeiro - RJ, 21330-650",
+      "icon": "assets/markercluster/marker.png"
+    },
+    {
+    "position": {
+      "lat": -22.881313,
+      "lng": -43.344846
+    },
+    "nome": "Barber Shop Storm Fury",
+    "endereco": "Praça dos Lavradores, 216 - Madureira,\n Rio de Janeiro - RJ, 21310-190",
+    "icon": "assets/markercluster/marker.png"
+   },
+   {
+    "position": {
+      "lat": -22.886082,
+      "lng": -43.357904
+    },
+    "nome": "Barbearia Rei Arthur",
+    "endereco": "Rua Sibauna, 6 - Vila Valqueire, \n Rio de Janeiro - RJ, 21330-650",
+    "icon": "assets/markercluster/marker.png"
+   }
     ];
   }
 }
